@@ -9,6 +9,14 @@ describe PartialPathCustomizer::PartialPathHelper, ".customize_partial_path" do
 
       expect(wrapped_obj.to_partial_path).to eq("dealers/seller_price_box_info")
     end
+
+    it "returns an object whose #to_partial_path returns the result of the passed in callable" do
+      seller = Dealer.new name: "ACL"
+
+      wrapped_obj = helper.customize_partial_path seller, ->(model){"dealer/#{model.name}"}
+
+      expect(wrapped_obj.to_partial_path).to eq("dealer/ACL")
+    end
   end
 
   context "with a collection" do

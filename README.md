@@ -56,6 +56,20 @@ to to be rendered like `bikes/summary`, `wheelsets/summary`, and `bikes/summary`
 <%= render customize_partial_path(@listings, 'summary') %>
 ```
 
+### Customizing partial_path generation
+
+If you need to further customize how the partial path is generated, you can pass a callable object in as the second
+argument. The callable object will receive a reference to the model when it's #call method is called.
+
+```ruby
+<%= render customize_partial_path(@bike, ->(model){ "#{model.class.model_name.singular}/#{model.status}_summary" })
+```
+
+That would allow you to generate a partial path like `bike/sold_summary`.
+
+**Note:** This is a low-level API and the higher level `customize_object_partial_path(<object>, <partial_name>)` should
+be used in most cases.
+
 ## License
 
 Partial Path Customizer is Copyright &copy; 2014 Animas Code Labs. It is free software, and may be redistributed
