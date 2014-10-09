@@ -1,3 +1,5 @@
+require 'dumb_delegator'
+
 class PartialPathCustomizer::Presenter < DumbDelegator
 
   def self.wrap_collection collection, &partial_path_block
