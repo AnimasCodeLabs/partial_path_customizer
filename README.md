@@ -70,6 +70,14 @@ That would allow you to generate a partial path like `bike/sold_summary`.
 **Note:** This is a low-level API and the higher level `customize_object_partial_path(<object>, <partial_name>)` should
 be used in most cases.
 
+## Credits
+
+![Animas Code Labs](https://b5065648-a-cb5b3c0d-s-sites.googlegroups.com/a/animascodelabs.com/public-files/home/ACL-Gmail-Signature-Logo.png)
+
+Partial Path Customizer is maintained and funded by [Animas Code Labs](http://animascodelabs.com).
+
+The names and logos for Animas Code Labs are trademarks of Animas Code Labs, LLC.
+
 ## License
 
 Partial Path Customizer is Copyright &copy; 2014 Animas Code Labs. It is free software, and may be redistributed
