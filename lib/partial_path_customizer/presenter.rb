@@ -15,7 +15,7 @@ class PartialPathCustomizer::Presenter < DumbDelegator
 
   def to_partial_path
     if @partial_path_block.present?
-      @partial_path_block.call(_model_name)
+      @partial_path_block.call(_model)
     else
       __getobj__.to_partial_path
     end
@@ -27,8 +27,8 @@ class PartialPathCustomizer::Presenter < DumbDelegator
 
   private
 
-  def _model_name
-    __getobj__.class.model_name.singular
+  def _model
+    __getobj__
   end
 
 end

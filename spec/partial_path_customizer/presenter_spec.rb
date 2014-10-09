@@ -24,8 +24,8 @@ describe PartialPathCustomizer::Presenter do
     it "generates a partial_path based on the block passed in" do
       business_contact = mock_model("BusinessContact", name: "Fred", to_partial_path: "businesses/business")
 
-      presenter = described_class.new business_contact do |model_name|
-        "#{model_name}/hello"
+      presenter = described_class.new business_contact do |model|
+        "#{model.class.model_name.singular}/hello"
       end
 
       expect(presenter.to_partial_path).to eq("business_contact/hello")
@@ -35,7 +35,7 @@ describe PartialPathCustomizer::Presenter do
   describe "#to_model" do
     it "returns the presenter object with a working to_partial_path method" do
       dealer = Dealer.new
-      presenter = described_class.new dealer do |model_name|
+      presenter = described_class.new dealer do |model|
        "test"
       end
 
@@ -50,8 +50,8 @@ describe PartialPathCustomizer::Presenter do
 
       collection_to_wrap = [business, business_contact]
 
-      wrapped_collection = described_class.wrap_collection collection_to_wrap do|model_name|
-        "#{model_name.pluralize}/summary"
+      wrapped_collection = described_class.wrap_collection collection_to_wrap do|model|
+        "#{model.class.model_name.plural}/summary"
       end
 
       returned_partial_paths = wrapped_collection.collect(&:to_partial_path)
