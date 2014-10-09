@@ -6,9 +6,9 @@ describe PartialPathCustomizer::Presenter do
     it "delegates undefined methods to object" do
       business = mock_model("Business", name: "Animas Code Labs")
 
-      customizer = described_class.new business
+      presenter = described_class.new business
 
-      expect(customizer.name).to eq("Animas Code Labs")
+      expect(presenter.name).to eq("Animas Code Labs")
     end
   end
 
@@ -16,30 +16,30 @@ describe PartialPathCustomizer::Presenter do
     it "defaults to the default #to_partial_path" do
       business = mock_model("Business", name: "Fred", to_partial_path: "businesses/business")
 
-      customizer = described_class.new business
+      presenter = described_class.new business
 
-      expect(customizer.to_partial_path).to eq(business.to_partial_path)
+      expect(presenter.to_partial_path).to eq(business.to_partial_path)
     end
 
     it "generates a partial_path based on the block passed in" do
       business_contact = mock_model("BusinessContact", name: "Fred", to_partial_path: "businesses/business")
 
-      customizer = described_class.new business_contact do |model_name|
+      presenter = described_class.new business_contact do |model_name|
         "#{model_name}/hello"
       end
 
-      expect(customizer.to_partial_path).to eq("business_contact/hello")
+      expect(presenter.to_partial_path).to eq("business_contact/hello")
     end
   end
 
   describe "#to_model" do
-    it "returns the customizer object with a working to_partial_path method" do
+    it "returns the presenter object with a working to_partial_path method" do
       dealer = Dealer.new
-      customizer = described_class.new dealer do |model_name|
+      presenter = described_class.new dealer do |model_name|
        "test"
       end
 
-      expect(customizer.to_model.to_partial_path).to eq("test")
+      expect(presenter.to_model.to_partial_path).to eq("test")
     end
   end
 
@@ -63,18 +63,18 @@ describe PartialPathCustomizer::Presenter do
     it "delegates to the class of the source object" do
       dealer = Dealer.new
 
-      customizer = described_class.new dealer
+      presenter = described_class.new dealer
 
-      expect(customizer.class.model_name).to eq(dealer.class.model_name)
+      expect(presenter.class.model_name).to eq(dealer.class.model_name)
     end
   end
 
   describe "integration with other rails helpers" do
     it "works properly when passing the presenter into the div_for helper" do
       dealer = Dealer.new id: 15
-      customizer = described_class.new dealer
+      presenter = described_class.new dealer
 
-      rendered_html = ApplicationController.helpers.div_for customizer
+      rendered_html = ApplicationController.helpers.div_for presenter
 
       expect(rendered_html).to eq("<div class=\"dealer\" id=\"dealer_15\"></div>")
     end
