@@ -1,6 +1,6 @@
 # Partial Path Customizer
 
-[![Build Status](https://travis-ci.org/animascodelabs/partial_path_customizer.svg?branch=master)](https://travis-ci.org/animascodelabs/partial_path_customizer)
+[![Build Status](https://travis-ci.org/AnimasCodeLabs/partial_path_customizer.svg?branch=master)](https://travis-ci.org/AnimasCodeLabs/partial_path_customizer)
 
 Partial Path Customizer allows you to override `#to_partial_path` for a Rails model at runtime.
 
