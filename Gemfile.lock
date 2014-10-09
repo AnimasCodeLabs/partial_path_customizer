@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    partial_path_customizer (0.0.1)
-      dumb_delegator (>= 0.6.0)
+    partial_path_customizer (0.1.0)
+      dumb_delegator (~> 0.6)
 
 GEM
   remote: https://rubygems.org/
@@ -86,5 +86,5 @@ DEPENDENCIES
   partial_path_customizer!
   pry
   rspec-activemodel-mocks
-  rspec-rails
+  rspec-rails (~> 3.0)
   sqlite3
