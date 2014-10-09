@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = PartialPathCustomizer::VERSION
   s.authors     = ["Aaron Renner"]
   s.email       = ["aaron@animascodelabs.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of PartialPathCustomizer."
-  s.description = "TODO: Description of PartialPathCustomizer."
+  s.homepage    = "https://github.com/AnimasCodeLabs/partial_path_customizer"
+  s.summary     = "Easily override #to_partial_path on Rails models"
+  s.description = "Easily override #to_partial_path on Rails models"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
