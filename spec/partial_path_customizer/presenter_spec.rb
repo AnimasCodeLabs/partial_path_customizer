@@ -68,4 +68,15 @@ describe PartialPathCustomizer::Presenter do
       expect(customizer.class.model_name).to eq(dealer.class.model_name)
     end
   end
+
+  describe "integration with other rails helpers" do
+    it "works properly when passing the presenter into the div_for helper" do
+      dealer = Dealer.new id: 15
+      customizer = described_class.new dealer
+
+      rendered_html = ApplicationController.helpers.div_for customizer
+
+      expect(rendered_html).to eq("<div class=\"dealer\" id=\"dealer_15\"></div>")
+    end
+  end
 end
