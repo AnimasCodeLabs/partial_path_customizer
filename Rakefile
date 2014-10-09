@@ -1,21 +1,18 @@
-begin
-  require 'bundler/setup'
-rescue LoadError
-  puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
+require 'bundler/setup'
+require 'bundler/gem_tasks'
+require 'appraisal'
+
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec)
+
+task :default do |t|
+  if ENV['BUNDLE_GEMFILE'] =~ /gemfiles/
+    exec 'rake spec'
+  else
+    Rake::Task['appraise'].execute
+  end
 end
 
-require 'rdoc/task'
-
-RDoc::Task.new(:rdoc) do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'PartialPathCustomizer'
-  rdoc.options << '--line-numbers'
-  rdoc.rdoc_files.include('README.rdoc')
-  rdoc.rdoc_files.include('lib/**/*.rb')
+task :appraise => ['appraisal:install'] do |t|
+  exec 'rake appraisal'
 end
-
-
-
-
-Bundler::GemHelper.install_tasks
-

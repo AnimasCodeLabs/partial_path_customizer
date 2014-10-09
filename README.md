@@ -4,7 +4,7 @@ Partial Path Customizer allows you to override `#to_partial_path` for a Rails mo
 
 ## Installation & Upgrading
 
-This gem is a railtie and is meant to be used with Rails. It works with versions of Rails greater than 3.0.
+This gem is a railtie and is meant to be used with Rails. It is tested with versions of Rails down to 3.2.
 
 Partial Path Customizer is recommended to be run as a gem and included in your Gemfile:
 
