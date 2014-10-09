@@ -53,7 +53,7 @@ it will render the partials `bikes/bike`, `wheelsets/wheels`, and `bikes/bike`. 
 to to be rendered like `bikes/summary`, `wheelsets/summary`, and `bikes/summary`, you can do this
 
 ```erb
-<%= render customize_partial_path(@listings, 'summary' %>
+<%= render customize_partial_path(@listings, 'summary') %>
 ```
 
 ## License
